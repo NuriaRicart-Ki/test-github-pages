@@ -1,0 +1,25 @@
+name: Deploy github pages generated image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run generated image script
+        run: python src/generate_svg.py
+
+      - name: Upload generated image
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-generated-image
+          path: src/data/generated_img.svg
