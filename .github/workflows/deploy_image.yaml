@@ -1,9 +1,7 @@
 name: Deploy github pages generated image
 
 on:
-  push:
-    branches:
-      - test-deploy-github-pages-image
+  workflow_dispatch:
 
 jobs:
   build:
